@@ -10,10 +10,20 @@ public class UserController : Controller
     private static int nextId = 1; // Variable estática para mantener el próximo ID disponible
 
     // GET: User
-    public ActionResult Index()
+    public ActionResult Index(string searchString)
     {
-        return View(userlist);
+        var users = from u in userlist
+                    select u;
+
+        if (!String.IsNullOrEmpty(searchString))
+        {
+            users = users.Where(s => s.Name.Contains(searchString) || s.Email.Contains(searchString));
+        }
+
+        return View(users.ToList());
     }
+
+    // Other methods...
 
     // GET: User/Details/5
     public ActionResult Details(int id)

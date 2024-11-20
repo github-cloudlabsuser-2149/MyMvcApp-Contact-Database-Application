@@ -9,6 +9,14 @@
 <p>
     @Html.ActionLink("Create New", "Create", "User")
 </p>
+
+<form asp-controller="User" asp-action="Index" method="get">
+    <p>
+        Search by name or email: <input type="text" name="searchString" value="@ViewBag.CurrentFilter" />
+        <input type="submit" value="Search" />
+    </p>
+</form>
+
 <table class="table">
     <tr>
         <th>
