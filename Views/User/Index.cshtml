@@ -9,6 +9,14 @@
 <p>
     @Html.ActionLink("Create New", "Create", "User")
 </p>
+
+<form method="get" asp-action="Index">
+    <div class="form-group">
+        <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" class="form-control" placeholder="Search by name" />
+        <button type="submit" class="btn btn-primary mt-2">Search</button>
+    </div>
+</form>
+
 <table class="table">
     <tr>
         <th>
